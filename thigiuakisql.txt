@@ -1,0 +1,22 @@
+Thi giữa kì 
+Trương Quốc Huy 22002085
+Đề 2(a2;b2) : phòng thi E404
+2a. Lấy ra danh sách khách hàng theo thứ tự tên theo Alphabet (A->Z), trong đó Tên
+khách hàng có chữ a hoặc bắt đầu bằng chữ m, chiều dài email từ 5 đến 20 ký tự
+(>=5, <=20). Thông tin hiển thị gồm: Mã khách hàng, Tên khách hàng, Email.
+=>
+select user_id as'Mã khách hàng', user_name as'Tên khách hàng', user_email
+from users
+where user_name like '%a%' or user_name like 'm%' and LENGTH(user_email) >=5 and LENGTH(user_email) <= 20
+order by user_name ASC
+2b.Liệt kê danh sách mua hàng của user bao gồm giá tiền của mỗi đơn hàng, thông tin
+hiển thị gồm: mã user, tên user, mã đơn hàng, tổng tiền
+=>
+select u.user_id, u.user_name, o.order_id, product_price*order_detail_id as'tổng tiền'
+from users u join orders o on u.user_id = o.user_id
+			join order_details d on d.order_id = o.order_id
+			join products p on p.product_id = d.product_id
+
+
+
+
